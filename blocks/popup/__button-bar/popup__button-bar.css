@@ -1,0 +1,12 @@
+.popup__button-bar {
+    width: 510px;
+    display: flex;
+    justify-content: end;
+}
+
+@media (max-width: 550px) {
+    .popup__button-bar {
+        width: 282px;
+        margin-bottom: 16px;
+    }
+}

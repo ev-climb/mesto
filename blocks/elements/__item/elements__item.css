@@ -1,0 +1,32 @@
+.elements__item {
+    width: 282px;
+    height: 361px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.elements__item:nth-of-type(1) {
+    background: url(../../../images/vorgol.jpg) top/282px 282px no-repeat white;
+}
+
+.elements__item:nth-of-type(2) {
+    background: url(../../../images/guamka.jpg) top/282px 282px no-repeat white;
+}
+
+.elements__item:nth-of-type(3) {
+    background: url(../../../images/baikal.jpg) top/282px 282px no-repeat white;
+}
+
+.elements__item:nth-of-type(4) {
+    background: url(../../../images/kamchatka.jpg) top/282px 282px no-repeat white;
+}
+
+.elements__item:nth-of-type(5) {
+    background: url(../../../images/stolby.jpg) top/282px 282px no-repeat white;
+}
+
+.elements__item:nth-of-type(6) {
+    background: url(../../../images/elbrus.jpg) top/282px 282px no-repeat white;
+}
