@@ -1,0 +1,17 @@
+.elements__description {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1.2;
+    margin: 0 0 30px 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 220px;
+}
+
+@media (max-width: 620px) {
+    .elements__description {
+        line-height: 1;
+    }
+}
