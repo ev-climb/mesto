@@ -6,6 +6,10 @@
     color: #FFFFFF;
     margin: 0;
     grid-area: name;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 294px;
 }
 
 @media (max-width: 720px) {

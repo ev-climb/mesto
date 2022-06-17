@@ -5,6 +5,7 @@
     height: 19px;
     border: none;
     transition: all 0.3s ease-in-out;
+    align-self: center;
 }
 
 .elements__like:hover {

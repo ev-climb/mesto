@@ -10,6 +10,8 @@
     text-align: center;
     color: #FFFFFF;
     transition: all 0.3s ease-in-out;
+    border: none;
+    padding: 0;
 }
 
 .popup__save:hover {
