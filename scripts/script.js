@@ -128,7 +128,6 @@ function closeEsc(evt) {
 
 function closeCLick(evt) {
   if (evt.target.classList.contains("popup_opened")) {
-    const openPopup = document.querySelector(".popup_opened");
     closePopup(openPopup);
   }
 }
@@ -152,3 +151,4 @@ closeButtons.forEach((button) => {
 
 formEdit.addEventListener("submit", profileForm);
 formAdd.addEventListener("submit", addCard);
+//Не забыть позже объединить обработчики у оверлея и крестика
