@@ -128,7 +128,7 @@ function closeEsc(evt) {
 
 function closeCLick(evt) {
   if (evt.target.classList.contains("popup_opened")) {
-    closePopup(openPopup);
+    closePopup(evt.target);
   }
 }
 
