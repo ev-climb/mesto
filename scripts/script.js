@@ -17,8 +17,7 @@ const closeButtons = document.querySelectorAll(".popup__close-button");
 const elementTemplate = document.querySelector(".element-template").content;
 const elements = document.querySelector(".elements");
 
-const initialCards = [
-  {
+const initialCards = [{
     nameCard: "Байкал",
     linkCard: "./images/baikal.jpeg",
   },
@@ -44,7 +43,10 @@ const initialCards = [
   },
 ];
 
-function createCard({ nameCard, linkCard }) {
+function createCard({
+  nameCard,
+  linkCard
+}) {
   const cardElement = elementTemplate.querySelector(".element").cloneNode(true);
   const likeCardButton = cardElement.querySelector(".element__like-button");
   const imageCard = cardElement.querySelector(".element__image");
@@ -64,13 +66,22 @@ function createCard({ nameCard, linkCard }) {
     toggleLike();
   });
   imageCard.addEventListener("click", function () {
-    openImage({ nameCard, linkCard });
+    openImage({
+      nameCard,
+      linkCard
+    });
   });
   return cardElement;
 }
 
-function renderCard({ nameCard, linkCard }) {
-  const card = createCard({ nameCard, linkCard });
+function renderCard({
+  nameCard,
+  linkCard
+}) {
+  const card = createCard({
+    nameCard,
+    linkCard
+  });
   elements.prepend(card);
 }
 
@@ -84,7 +95,10 @@ function addCard(evt) {
   evt.preventDefault();
   const nameCard = placeInput.value;
   const linkCard = linkInput.value;
-  renderCard({ nameCard, linkCard });
+  renderCard({
+    nameCard,
+    linkCard
+  });
   evt.target.reset();
   closePopup(addPopup);
 }
@@ -100,7 +114,10 @@ function profileForm(evt) {
   closePopup(editPopup);
 }
 
-function openImage({ nameCard, linkCard }) {
+function openImage({
+  nameCard,
+  linkCard
+}) {
   imgPopup.src = linkCard;
   imgPopup.alt = nameCard;
   subtitlePopup.textContent = nameCard;
@@ -151,4 +168,3 @@ closeButtons.forEach((button) => {
 
 formEdit.addEventListener("submit", profileForm);
 formAdd.addEventListener("submit", addCard);
-//Не забыть позже объединить обработчики у оверлея и крестика

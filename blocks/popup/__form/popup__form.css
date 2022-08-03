@@ -1,7 +1,7 @@
 .popup__form {
+    gap: 30px;
     display: flex;
     flex-direction: column;
-    gap: 35px;
     width: calc(100% - 36px * 2);
     margin: 0 auto;
   }

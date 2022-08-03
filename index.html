@@ -2,28 +2,28 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="./pages/index.css"/>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
     <title>Место</title>
 </head>
 
 <body class="page">
     <header class="header">
-        <img src="./images/logo.svg" alt="лого" class="header__logo"/>
+        <img src="./images/logo.svg" alt="лого" class="header__logo" />
     </header>
     <main class="main">
         <section class="profile">
-            <img src="./images/avatar.jpeg" alt="аватар" class="profile__avatar"/>
+            <img src="./images/avatar.jpeg" alt="аватар" class="profile__avatar" />
             <div class="profile__info">
                 <div class="profile__content">
-                    <h1 class="profile__name">Фантомас</h1>
-                    <button type="button" aria-label="Редактировать" class="profile__button-edit"></button>
+                    <h1 class="profile__name">Губка Боб</h1>
+                    <button type="button" aria-label="Редактировать профиль" class="profile__button-edit"></button>
                 </div>
-                <p class="profile__description">Исследователь океана</p>
+                <p class="profile__description">Живёт на дне океана</p>
             </div>
-            <button class="profile__button-add" type="button" aria-label="Добавить"></button>
+            <button class="profile__button-add" type="button" aria-label="Добавить новое фото"></button>
         </section>
         <section class="elements"></section>
     </main>
@@ -33,42 +33,51 @@
     <div class="popup popup_type_edit">
         <div class="popup__container">
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form popup__form_type_edit" name="form_type_edit">
-                <input class="popup__input popup__input_name" id="name-input" name="name" required placeholder="Имя"
-                    type="text" maxlength="40" minlength="2" />
-                <input class="popup__input popup__input_job" id="job-input" name="job" required placeholder="О себе"
-                    type="text" maxlength="200" minlength="2"/>
+            <form class="popup__form popup__form_type_edit" name="form_type_edit" novalidate>
+                <label class="popup__form-field">
+                    <input class="popup__input popup__input_name" id="name-input" name="name" required placeholder="Имя"
+                        type="text" maxlength="40" minlength="2" />
+                    <span class="popup__input-error name-input-error"></span>
+                </label>
+                <label class="popup__form-field">
+                    <input class="popup__input popup__input_job" id="job-input" name="job" required placeholder="О себе"
+                        type="text" maxlength="200" minlength="2" />
+                    <span class="popup__input-error job-input-error"></span>
+                </label>
                 <button type="submit" class="popup__button">Сохранить</button>
             </form>
-            <button class="popup__close-button popup__close-button_type_edit" type="button"
-                aria-label="Закрыть"></button>
+            <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
         </div>
     </div>
     <div class="popup popup_type_add">
         <div class="popup__container">
             <h2 class="popup__title">Новое место</h2>
-            <form class="popup__form popup__form_type_add" name="form_type_add">
-                <input class="popup__input popup__input_place" id="place-input" name="place" required
-                    placeholder="Название" type="text" maxlength="30" minlength="2"/>
-                <input class="popup__input popup__input_link" id="link-input" name="link" required
-                    placeholder="Ссылка на картинку" type="url"/>
-
+            <form class="popup__form popup__form_type_add" name="form_type_add" novalidate>
+                <label class="popup__form-field">
+                    <input class="popup__input popup__input_place" id="place-input" name="place" required
+                        placeholder="Название" type="text" maxlength="30" minlength="2" />
+                    <span class="popup__input-error place-input-error"></span>
+                </label>
+                <label class="popup__form-field">
+                    <input class="popup__input popup__input_link" id="link-input" name="link" required
+                        placeholder="Ссылка на картинку" type="url" />
+                    <span class="popup__input-error link-input-error"></span>
+                </label>
                 <button type="submit" class="popup__button">Создать</button>
             </form>
-            <button class="popup__close-button popup__close-button_type_add" type="button"
-                aria-label="Закрыть"></button>
+            <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
         </div>
     </div>
     <div class="popup popup_type_image">
         <div class="popup__background">
             <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
-            <img src="#" alt="место" class="popup__image"/>
+            <img src="#" alt="место" class="popup__image" />
             <p class="popup__subtitle"></p>
         </div>
     </div>
     <template class="element-template">
         <div class="element">
-            <img class="element__image" alt="#"/>
+            <img class="element__image" alt="#" />
             <button class="element__delete-button" type="button" aria-label="Закрыть"></button>
             <div class="element__content">
                 <h2 class="element__title"></h2>
@@ -77,6 +86,7 @@
         </div>
     </template>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
