@@ -7,13 +7,6 @@ const validationConfig = {
     errorVisibility: 'popup__input-error_active',
 };
 
-
-
-// Вынесем все необходимые элементы формы в константы
-const formElement = document.querySelector(validationConfig.formElement);
-const formInput = formElement.querySelector(validationConfig.inputElement);
-const formError = formElement.querySelector(`.${formInput.id}-error`);
-
 // Функция, которая добавляет класс с ошибкой
 const showInputError = (formElement, formInput, errorMessage) => {
     const errorElement = formElement.querySelector(`.${formInput.id}-error`);
@@ -45,9 +38,6 @@ const isValid = (formElement, formInput) => {
     }
 };
 
-// Вызовем функцию isValid на каждый ввод символа
-formInput.addEventListener('input', isValid);
-
 const toggleButtonState = (inputList, buttonElement) => {
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.add(validationConfig.inactiveButton);
@@ -71,9 +61,6 @@ const setEventListeners = (formElement) => {
 const enableValidation = (validationConfig) => {
     const formList = Array.from(document.querySelectorAll(validationConfig.formElement));
     formList.forEach((formElement) => {
-        formElement.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-        });
         setEventListeners(formElement);
     });
 };

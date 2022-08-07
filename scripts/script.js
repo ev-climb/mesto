@@ -1,21 +1,21 @@
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__description");
-const editButtonProfile = document.querySelector(".profile__button-edit");
-const addButtonProfile = document.querySelector(".profile__button-add");
-const addPopup = document.querySelector(".popup_type_add");
+const buttonProfileEdit = document.querySelector(".profile__button-edit");
+const buttonProfileAdd = document.querySelector(".profile__button-add");
+const popupAdd = document.querySelector(".popup_type_add");
 const formAdd = document.querySelector(".popup__form_type_add");
 const placeInput = formAdd.querySelector(".popup__input_place");
 const linkInput = formAdd.querySelector(".popup__input_link");
-const editPopup = document.querySelector(".popup_type_edit");
+const popupEdit = document.querySelector(".popup_type_edit");
 const formEdit = document.querySelector(".popup__form_type_edit");
 const nameInput = formEdit.querySelector(".popup__input_name");
 const jobInput = formEdit.querySelector(".popup__input_job");
 const imgTypePopup = document.querySelector(".popup_type_image");
 const imgPopup = document.querySelector(".popup__image");
 const subtitlePopup = document.querySelector(".popup__subtitle");
-const closeButtons = document.querySelectorAll(".popup__close-button");
+const buttonClose = document.querySelectorAll(".popup__close-button");
 const elementTemplate = document.querySelector(".element-template").content;
-const elements = document.querySelector(".elements");
+const cardsContainer = document.querySelector(".elements");
 
 const initialCards = [{
     nameCard: "Байкал",
@@ -82,7 +82,7 @@ function renderCard({
     nameCard,
     linkCard
   });
-  elements.prepend(card);
+  cardsContainer.prepend(card);
 }
 
 function render() {
@@ -100,7 +100,10 @@ function addCard(evt) {
     linkCard
   });
   evt.target.reset();
-  closePopup(addPopup);
+  closePopup(popupAdd);
+  document
+    .querySelector('.button-add_type_submit')
+    .classList.add('popup__button_disabled');
 }
 
 function deleteCard(cardElement) {
@@ -111,7 +114,7 @@ function profileForm(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  closePopup(editPopup);
+  closePopup(popupEdit);
 }
 
 function openImage({
@@ -149,17 +152,17 @@ function closeCLick(evt) {
   }
 }
 
-editButtonProfile.addEventListener("click", function () {
+buttonProfileEdit.addEventListener("click", function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  openPopup(editPopup);
+  openPopup(popupEdit);
 });
 
-addButtonProfile.addEventListener("click", function () {
-  openPopup(addPopup);
+buttonProfileAdd.addEventListener("click", function () {
+  openPopup(popupAdd);
 });
 
-closeButtons.forEach((button) => {
+buttonClose.forEach((button) => {
   const popup = button.closest(".popup");
   button.addEventListener("click", () => {
     closePopup(popup);
