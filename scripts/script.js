@@ -102,7 +102,7 @@ function addCard(evt) {
   evt.target.reset();
   closePopup(popupAdd);
   document
-    .querySelector('.button-add_type_submit')
+    .querySelector('.popup__button_type_submit')
     .classList.add('popup__button_disabled');
 }
 
