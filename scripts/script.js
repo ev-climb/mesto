@@ -16,6 +16,7 @@ const subtitlePopup = document.querySelector(".popup__subtitle");
 const buttonClose = document.querySelectorAll(".popup__close-button");
 const elementTemplate = document.querySelector(".element-template").content;
 const cardsContainer = document.querySelector(".elements");
+const buttonSubmit = document.querySelector('.popup__button_type_submit');
 
 const initialCards = [{
     nameCard: "Байкал",
@@ -101,9 +102,8 @@ function addCard(evt) {
   });
   evt.target.reset();
   closePopup(popupAdd);
-  document
-    .querySelector('.popup__button_type_submit')
-    .classList.add('popup__button_disabled');
+  buttonSubmit.classList.add('popup__button_disabled');
+  buttonSubmit.setAttribute('disabled', true);
 }
 
 function deleteCard(cardElement) {
