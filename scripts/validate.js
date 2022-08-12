@@ -51,11 +51,11 @@ const toggleButtonState = (inputList, buttonElement, config) => {
 const setEventListeners = (formElement, config) => {
     const inputList = Array.from(formElement.querySelectorAll(config.inputElement));
     const buttonElement = formElement.querySelector(config.submitButton);
-    toggleButtonState(inputList, buttonElement, validationConfig);
+    toggleButtonState(inputList, buttonElement, config);
     inputList.forEach((formInput) => {
         formInput.addEventListener('input', () => {
-            isValid(formElement, formInput, validationConfig);
-            toggleButtonState(inputList, buttonElement, validationConfig);
+            isValid(formElement, formInput, config);
+            toggleButtonState(inputList, buttonElement, config);
         });
     });
 };
@@ -63,7 +63,7 @@ const setEventListeners = (formElement, config) => {
 const enableValidation = (config) => {
     const formList = Array.from(document.querySelectorAll(config.formElement));
     formList.forEach((formElement) => {
-        setEventListeners(formElement, validationConfig);
+        setEventListeners(formElement, config);
     });
 };
 
