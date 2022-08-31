@@ -18,7 +18,6 @@ const imgPopup = document.querySelector(".popup__image");
 const subtitlePopup = document.querySelector(".popup__subtitle");
 const buttonClose = document.querySelectorAll(".popup__close-button");
 const cardsContainer = document.querySelector(".elements");
-const buttonSubmit = document.querySelector('.popup__button_type_submit');
 
 const validationConfig = {
   formElement: '.popup__form',
@@ -71,6 +70,13 @@ const openImage = (nameCard, linkCard) => {
   openPopup(imgTypePopup);
 }
 
+// function handleCardClick(name, link) {
+//   imgPopup.src = link;
+//   imgPopup.alt = name;
+//   subtitlePopup.textContent = name;
+//   openPopup(imgTypePopup);
+// } //Пока не понимаю логику с этой функцией, предложенной Екатериной. Не могу понять, чем она отличается от openImage. Подумать на досуге
+
 //Закрытие попапа
 function closePopup(popupElement) {
   popupElement.classList.remove("popup_opened");
@@ -106,8 +112,7 @@ function addCard(evt) {
   renderCard({nameCard:placeInput.value, linkCard:linkInput.value});
   evt.target.reset();
   closePopup(popupAdd);
-  buttonSubmit.classList.add('popup__button_disabled');
-  buttonSubmit.setAttribute('disabled', true);
+  addCardValidation.submitButtonInactive();
 }
 
 formAdd.addEventListener("submit", addCard);
@@ -135,7 +140,7 @@ buttonProfileAdd.addEventListener("click", function () {
 });
 
 //Создаем новую карточку
-const createCard = (card) => new Card(card, '.element-template', openImage).generateCard();
+const createCard = (card) => new Card(card, '.element-template', openImage, '.element__image').generateCard();
 
 function renderCard (card) {
   cardsContainer.prepend(createCard(card));
@@ -146,8 +151,8 @@ initialCards.forEach((card) => {
 });
 
 //Валидация
-const EditProfileValidation = new FormValidator(validationConfig, popupEdit);
-const AddCardValidation = new FormValidator(validationConfig, popupAdd);
+const editProfileValidation = new FormValidator(validationConfig, popupEdit);
+const addCardValidation = new FormValidator(validationConfig, popupAdd);
 
-EditProfileValidation.enableValidation(validationConfig);
-AddCardValidation.enableValidation(validationConfig);
+editProfileValidation.enableValidation(validationConfig);
+addCardValidation.enableValidation(validationConfig);
