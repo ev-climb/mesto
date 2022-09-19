@@ -1,11 +1,11 @@
-import './pages/index.css'
-import * as constants from "./utils/constants.js"
-import { Section } from "./components/Section.js"
-import { Card } from "./components/Card.js"
-import { PopupWithImage } from "./components/PopupWithImage.js"
-import { PopupWithForm } from "./components/PopupWithForm.js"
-import { UserInfo } from "./components/UserInfo.js"
-import {FormValidator} from "./components/FormValidator.js"
+import './index.css'
+import * as constants from "../utils/constants.js"
+import { Section } from "../components/Section.js"
+import { Card } from "../components/Card.js"
+import { PopupWithImage } from "../components/PopupWithImage.js"
+import { PopupWithForm } from "../components/PopupWithForm.js"
+import { UserInfo } from "../components/UserInfo.js"
+import {FormValidator} from "../components/FormValidator.js"
 
 export const user = new UserInfo({userName: constants.profileName, userAbout: constants.profileAbout})
 
@@ -26,7 +26,7 @@ const popupProfileWithForm  = new PopupWithForm (constants.popupProfile, (values
 })
 
 const blockPopupAddWithForm  = new PopupWithForm (constants.popupAdd, (values)=>{
-  constants.elements.prepend (addElement (values.name, values.link))
+  section.addItem(addElement (values.place, values.link))
   blockPopupAddWithForm.close()
   addValidator.toggleButtonState()
 })
@@ -34,11 +34,10 @@ const blockPopupAddWithForm  = new PopupWithForm (constants.popupAdd, (values)=>
 const image = new PopupWithImage(constants.popupImage)
 
 function openEditPopup() {
-  user.getUserInfo()
-  constants.namePopupProfile.value = user.info.name;
-  constants.aboutPopupProfile.value = user.info.about;
-  profileValidator.deleteErrors()
+  const { name, about } = user.getUserInfo()
+  popupProfileWithForm.setInputValues({ name, about })
   popupProfileWithForm.open()
+  profileValidator.deleteErrors()
 }
 
 function addElement(name, link,){

@@ -7,7 +7,7 @@ export class Card {
   this._handleCardClick = handleCardClick
   }
 
-  createElement(_name, _link) {
+  createElement() {
     this.card = this._templete.cloneNode(true);
 
     this._elementImage = this.card.querySelector(".element__image");
@@ -16,9 +16,11 @@ export class Card {
     this._elementButtonDel = this.card.querySelector(".element__delete-button")
     this._elementButtonLike = this.card.querySelector(".element__like-button")
 
-    this._elementName.textContent = _name;
-    this._elementImage.setAttribute ('alt', _name)
-    this._elementImage.setAttribute ('src', _link)
+    this._elementName.textContent = this._name;
+    // this._elementImage.setAttribute ('alt', this._name)
+    // this._elementImage.setAttribute ('src', this._link)
+    this._elementImage.src = this._link
+    this._elementImage.alt = this._name
 
     this._deleteElement()
     this._likeElement()
