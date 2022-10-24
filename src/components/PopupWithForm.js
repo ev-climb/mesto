@@ -36,4 +36,8 @@ export class PopupWithForm extends Popup {
       input.value = data[input.name]
     })
   }
+
+  changeButtonText(text) {
+    this.buttonSave.textContent = `${text}`
+  }
 }

@@ -20,7 +20,8 @@ export const imageAvatar = document.querySelector(".profile__avatar");
 export const popupTypeConfirm = document.querySelector(".popup_type_confirm");
 export const cardDell = document.querySelector(".element__delete-button");
 
-export let userData ={}
+export let userData = {}
+export let userId = {}
 
 export const classes = {
   formSelector: '.popup__form',
@@ -30,45 +31,3 @@ export const classes = {
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error', 
 }
-
-// import baikal from '../images/baikal.jpeg';
-// import dombay from '../images/dombai.jpeg';
-// import elbrus from '../images/elbrus.jpeg';
-// import guamka from '../images/guamka.jpeg';
-// import kamchatka from '../images/kamchatka.jpeg';
-// import karachay from '../images/karach.jpeg';
-
-// export const initialCards = [
-//     {
-//         name: 'Байкал',
-//         link: baikal
-//     },
-//     {
-//         name: 'Домбай',
-//         link: dombay
-//     },
-//     {
-//         name: 'Эльбрус',
-//         link: elbrus
-//     },
-//     {
-//         name: 'Гуамское ущелье',
-//         link: guamka
-//     },
-//     {
-//         name: 'Камчатка',
-//         link: kamchatka
-//     },
-//     {
-//         name: 'Карачаево-черкесия',
-//         link: karachay
-//     },
-//   ];
-
-//   export const apiOptions = {
-//     url: "https://mesto.nomoreparties.co",
-//     headers: {
-//       authorization: "4509e525-ca77-4a01-926a-8836b37164ae",
-//       "Content-Type": "application/json",
-//     },
-//   };

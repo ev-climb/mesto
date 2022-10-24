@@ -11,14 +11,6 @@ import { Api } from "../components/Api.js"
 
 let section;
 
-
-// const api = new Api({
-//   url: 'https://mesto.nomoreparties.co/',
-//   headers: {
-//     authorization: '4509e525-ca77-4a01-926a-8836b37164ae',
-//     'Content-Type': 'application/json'
-//   }
-// });
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/',
   headers: {
@@ -41,12 +33,12 @@ const popupProfileWithForm  = new PopupWithForm (constants.popupProfile, (values
       console.log('Ошибка сервера', err )
     })
     .finally(()=>{
-      popupProfileWithForm.buttonSave.textContent = "Создать"
+      popupProfileWithForm.buttonSave.textContent = "Сохранить"
     })
 })
 
 const popupEditAvatar = new PopupWithForm (constants.popupAvatar, (values)=>{
-  popupEditAvatar.buttonSave.textContent = "Сохранение..."
+  popupEditAvatar.changeButtonText("Сохранение...")
   api.editAvatar(values.link)
     .then((data)=>{
       user.setUserInfo(data)
@@ -57,13 +49,13 @@ const popupEditAvatar = new PopupWithForm (constants.popupAvatar, (values)=>{
       console.log('Ошибка сервера', err )
     })
     .finally(()=>{
-      popupEditAvatar.buttonSave.textContent = "Создать"
+      popupEditAvatar.changeButtonText("Сохранить")
     })
   
   })
 
 const popupAddWithForm  = new PopupWithForm (constants.popupAdd, (values)=>{
-  popupAddWithForm.buttonSave.textContent = "Сохранение..."
+  popupAddWithForm.changeButtonText("Сохранение...")
   api.addCard(values.place, values.link)
     .then((res) => {
       section.addItem(addElement (res.name, res.link, res._id, res, constants.userData.data))
@@ -74,7 +66,7 @@ const popupAddWithForm  = new PopupWithForm (constants.popupAdd, (values)=>{
       console.log('Ошибка сервера', err )
     })
     .finally(()=>{
-      popupAddWithForm.buttonSave.textContent = "Создать"
+      popupAddWithForm.changeButtonText("Создать")
     })
     
 })
@@ -115,7 +107,7 @@ function openAvatarPopup() {
   avatarValidator.toggleButtonState()
 }
 
-function addElement(name, link, id, data, user){
+function addElement(name, link, id, data){
   const card = new Card (
     name,
     link, 
@@ -149,7 +141,7 @@ function addElement(name, link, id, data, user){
           })
       }
     },
-    data, constants.userData, data.likes)
+    data, constants.userId.data, data.likes, data.owner._id)
     
   const element = card.createElement()
 
@@ -172,6 +164,7 @@ api.getUser()
   .then((res) => {
       user.setUserInfo(res)
       constants.userData.data = res
+      constants.userId.data = res._id
   })
   .catch(function(err){
     console.log(`Ошибка!`,err)

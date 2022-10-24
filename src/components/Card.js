@@ -1,6 +1,6 @@
 export class Card {
 
-  constructor(name, link, templete, handleCardClick, handleClickDelete, handleClickLike, data, user, likes){
+  constructor(name, link, templete, handleCardClick, handleClickDelete, handleClickLike, data, userId, likes, ownerId){
     this._name = name
     this._link = link
     this._templete = templete
@@ -8,9 +8,11 @@ export class Card {
     this._handleClickDelete = handleClickDelete
     this._handleClickLike = handleClickLike
     this._data = data
-    this._user = user
+    this._ownerId = ownerId
+    this._userId = userId
     this._likes = likes;
   }
+  
 
   createElement() {
     this.card = this._templete.cloneNode(true);
@@ -33,13 +35,13 @@ export class Card {
     this.setLikes(this._likes);
 
 
-    if (this._data.owner._id === this._user.data._id) {
+    if (this._ownerId === this._userId) {
       this._elementButtonDel.classList.remove("element__delete-button_inactive");
     }
 
     if (
       this._likes.some((owner) => {
-        return owner._id === this._user._id;
+        return owner._id === this._userId;
       })
     ) {
       this._elementButtonLike.classList.toggle("element__like-button_active");
