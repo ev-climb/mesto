@@ -5,6 +5,7 @@ export class PopupWithImage extends Popup {
     super(popup)
     this._image = this._popup.querySelector('.popup__image')
     this._name = this._popup.querySelector('.popup__subtitle')
+    this.setEventListeners();
   }
 
   open(cardName, cardImage){
