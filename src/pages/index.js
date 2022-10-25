@@ -160,30 +160,51 @@ addValidator.enableValidation()
 profileValidator.enableValidation()
 avatarValidator.enableValidation()
 
-api.getUser()
-  .then((res) => {
-      user.setUserInfo(res)
-      constants.userData.data = res
-      constants.userId.data = res._id
-  })
-  .catch(function(err){
-    console.log(`Ошибка!`,err)
-  })
+// api.getUser()
+//   .then((res) => {
+//       user.setUserInfo(res)
+//       constants.userData.data = res
+//       constants.userId.data = res._id
+//   })
+//   .catch(function(err){
+//     console.log(`Ошибка!`,err)
+//   })
 
-api.getAllCards()
-  .then(function(data) {
+// api.getAllCards()
+//   .then(function(data) {
+//     section = new Section({
+//       items: data,
+//       renderer: (element)=>{
+//         const card = addElement(element.name, element.link, element.id, element)
+//         section.addItem(card)
+//       }
+//     },
+//     constants.elements
+//     );
+//     section.renderItems();
+//   })
+//   .catch(function(err){
+//     console.log(`Упс!`,err)
+//   })
+
+Promise.all([api.getUser(), api.getAllCards()])
+  .then((res) => {
+    user.setUserInfo(res[0])
+    constants.userData.data = res[0]
+    constants.userId.data = res[0]._id
+
     section = new Section({
-      items: data,
+      items: res[1],
       renderer: (element)=>{
-        const card = addElement(element.name, element.link, element.id, element)
+        const card = addElement(element.name, element.link, element._id, element)
         section.addItem(card)
+        section.uppItem(card)
       }
     },
     constants.elements
     );
     section.renderItems();
   })
-  .catch(function(err){
-    console.log(`Упс!`,err)
+  .catch((err)=>{
+    console.log('Ошибка сервера', err )
   })
-
