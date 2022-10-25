@@ -1,4 +1,4 @@
-export class Card {
+export default class Card {
 
   constructor(name, link, templete, handleCardClick, handleClickDelete, handleClickLike, data, userId, likes, ownerId){
     this._name = name

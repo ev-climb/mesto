@@ -1,6 +1,6 @@
-import { Popup } from "./Popup.js";
+import Popup from "./Popup.js";
 
-export class PopupConfirm extends Popup {
+export default class PopupConfirm extends Popup {
   constructor(popup, callback) {
     super(popup);
     this._callback = callback;
